@@ -1,57 +1,70 @@
 using System;
+using System.Collections.Generic;
 
-
-//defining the scripture class
-piblic class Scripture
+public class Scripture
 {
-    //member variables
     private Reference _reference;
-    private List<Word> _word;
+    private List<Word> _words;
+    private Random _random;
 
-    //constructor
-    public Scripture(Reference reference, string text) {
-        //initializing the reference and and word
-        _reference = reference;
-        _word = new List<word>();
-
-        //spliting the text into words and create Word object
-        string[] words = text.Split ('');
-        foreach(string word in words)
-        {
-            _words.Add(new Word(word));
-        }
-    }
-
-    //methord to hide random words
-    public void  HideRandomWords(int numberToHide)
+    // Constructor that builds the scripture from reference and text
+    public Scripture(Reference reference, string text)
     {
-        //getting a list of visible words
-        List<word> visibeWords = _words.Where(=> ! w.IsHidden())ToList();
+        this._reference = reference;
+        this._words = new List<Word>();
+        this._random = new Random();
 
-        //hiding random words
-        Random random = new Random();
-        for(int i = 0; i <numberToHide; i++)
+        // Split text into words and create Word objects
+        string[] wordArray = text.Split(' ');
+        foreach (string word in wordArray)
         {
-            if (visibleWords.Count >0){
-            Word wordtoHide =visibleWords[random.Next(visibleWords.Count)];
-            wordtoHide.Hide();visibeWords.Remove(wordtoHide)
-            }
+            this._words.Add(new Word(word));
         }
     }
 
-    //mrthord to get the display text 
+    // Hide a specified number of random words that are not already hidden
+    public void HideRandomWords(int numberToHide)
+    {
+        int attempts = 0;
+
+        while (numberToHide > 0 && attempts < 100)
+        {
+            int index = this._random.Next(this._words.Count);
+
+            if (!this._words[index].IsHidden())
+            {
+                this._words[index].Hide();
+                numberToHide--;
+            }
+
+            attempts++;
+        }
+    }
+
+    // Return the scripture text with current visibility state
     public string GetDisplayText()
     {
-        //get the display text for each word and join them together 
-        return sting.join(",_words.Select"(w => w.GetDisplayText()));
+        string display = this._reference.GetDisplayText() + " ";
+
+        foreach (Word word in this._words)
+        {
+            display += word.GetDisplayText() + " ";
+        }
+
+        return display.Trim(); // Remove trailing space
     }
-    //methord to checkif the cripture is completely hidden
-    public bool IsCompletelyHidden()
+
+    // Check if all words have been hidden
+    public bool AllWordsHidden()
     {
-        //checkign if all words are hidden
-        return _words.all(w => w.IsHidden());
+        foreach (Word word in this._words)
+        {
+            if (!word.IsHidden())
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
-        
-
-    
