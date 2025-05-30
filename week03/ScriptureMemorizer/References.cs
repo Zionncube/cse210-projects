@@ -1,45 +1,37 @@
-using System;
-
-
-//defone the Refrence class
-piblic classReference
+public class Reference
 {
-    //member variable
     private string _book;
     private int _chapter;
-    private int _verse;
+    private int _startVerse;
     private int _endVerse;
 
-    //constructor for single verse
-    pubic Reference(string book, int chapter, int verse)
-    {
-        //initializing the book chapter and the verse
-        _book = book;
-        _chapter = chapter;
-        _verse =  verse;
-    }
-
-    //constructor for the verse renge
-    public Refrence(string book, int chapter, int startVerse, int _endVerse)
+    // Constructor for single verse
+    public Reference(string book, int chapter, int verse)
     {
         _book = book;
         _chapter = chapter;
-        _verse = startVerse;
-        _endVerse - _endVerse;
+        _startVerse = verse;
+        _endVerse = verse;
     }
 
-    //methord to get the display text 
+    // Constructor for verse range
+    public Reference(string book, int chapter, int startVerse, int endVerse)
+    {
+        _book = book;
+        _chapter = chapter;
+        _startVerse = startVerse;
+        _endVerse = endVerse;
+    }
+
+    // Returns reference as a string
     public string GetDisplayText()
     {
-        //returning the refrence text
-        if(_endVerse.HasValue)
+        if (_startVerse == _endVerse)
         {
-        return $"{_book} {_chapter} : {_verse}-{_endVerse}";
+            return $"{_book} {_chapter}:{_startVerse}";
         }
         else
         {
-            return $"{_book} {_chapter} : {_verse}";
+            return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
         }
     }
-
-}
