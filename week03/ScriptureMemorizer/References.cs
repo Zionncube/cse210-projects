@@ -5,33 +5,34 @@ public class Reference
     private int _startVerse;
     private int _endVerse;
 
-    // Constructor for single verse
+    // Constructor for a single verse
     public Reference(string book, int chapter, int verse)
     {
-        _book = book;
-        _chapter = chapter;
-        _startVerse = verse;
-        _endVerse = verse;
+        this._book = book;
+        this._chapter = chapter;
+        this._startVerse = verse;
+        this._endVerse = verse;
     }
 
-    // Constructor for verse range
+    // Constructor for a verse range
     public Reference(string book, int chapter, int startVerse, int endVerse)
     {
-        _book = book;
-        _chapter = chapter;
-        _startVerse = startVerse;
-        _endVerse = endVerse;
+        this._book = book;
+        this._chapter = chapter;
+        this._startVerse = startVerse;
+        this._endVerse = endVerse;
     }
 
-    // Returns reference as a string
+    // Return the formatted reference as a string
     public string GetDisplayText()
     {
-        if (_startVerse == _endVerse)
+        if (this._startVerse == this._endVerse)
         {
-            return $"{_book} {_chapter}:{_startVerse}";
+            return $"{this._book} {this._chapter}:{this._startVerse}";
         }
         else
         {
-            return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
+            return $"{this._book} {this._chapter}:{this._startVerse}-{this._endVerse}";
         }
     }
+}
