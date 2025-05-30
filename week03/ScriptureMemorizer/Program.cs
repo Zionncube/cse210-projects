@@ -33,3 +33,9 @@ class Program
         Console.ReadKey(); // Wait for key press
     }
 }
+
+
+// random words are onlyy hidden if not already hidden.
+// the scripture reference handles both single verse and verse range.
+// object-oriented design with encapsulation in 4 distinct classes.
+// the code includes full comments and uses 'this.' for clarity and correction
