@@ -1,48 +1,37 @@
-using System;
-
-//define the Word class
-piblic class Word
+public class Word
 {
-   //member variables
     private string _text;
-    private bool<Word> _isHidden;
+    private bool _isHidden;
 
-    //constructor
-    public Word(string text) 
+    // Constructor to initialize word text
+    public Word(string text)
     {
-        //initializing the text and visibiliy
-        
-        _text = text;
-        _isHidden = false;
-    }
-    
-     //method to hide the word 
-    public voide Hide()
-    {
-        //set the visibility ot hidden
-        _isHidden = true;
+        this._text = text;
+        this._isHidden = false;
     }
 
-    //method to show the word
-    public void Show()
+    // Method to hide the word
+    public void Hide()
     {
-        //set the visibility to visible
-        _isHidden = false;
+        this._isHidden = true;
     }
 
-    //methord to check of the word is hidden
-    pubic bool IsHidden()
+    // Check if word is hidden
+    public bool IsHidden()
     {
-        // returning the visibility
-        return isHidden;
+        return this._isHidden;
     }
 
-    //methord to get the disply text
-    pubic sting GetDisplayText()
+    // Return underscores or actual word
+    public string GetDisplayText()
     {
-        // returning the next if visible, otherwise return underscores
-        return _isHidden ? new string('_',_text.Length) : _text;
+        if (this._isHidden)
+        {
+            return new string('_', this._text.Length);
+        }
+        else
+        {
+            return this._text;
+        }
     }
-
 }
-       

@@ -1,45 +1,38 @@
-using System;
-
-
-//defone the Refrence class
-piblic classReference
+public class Reference
 {
-    //member variable
     private string _book;
     private int _chapter;
-    private int _verse;
+    private int _startVerse;
     private int _endVerse;
 
-    //constructor for single verse
-    pubic Reference(string book, int chapter, int verse)
+    // Constructor for a single verse
+    public Reference(string book, int chapter, int verse)
     {
-        //initializing the book chapter and the verse
-        _book = book;
-        _chapter = chapter;
-        _verse =  verse;
+        this._book = book;
+        this._chapter = chapter;
+        this._startVerse = verse;
+        this._endVerse = verse;
     }
 
-    //constructor for the verse renge
-    public Refrence(string book, int chapter, int startVerse, int _endVerse)
+    // Constructor for a verse range
+    public Reference(string book, int chapter, int startVerse, int endVerse)
     {
-        _book = book;
-        _chapter = chapter;
-        _verse = startVerse;
-        _endVerse - _endVerse;
+        this._book = book;
+        this._chapter = chapter;
+        this._startVerse = startVerse;
+        this._endVerse = endVerse;
     }
 
-    //methord to get the display text 
+    // Return the formatted reference as a string
     public string GetDisplayText()
     {
-        //returning the refrence text
-        if(_endVerse.HasValue)
+        if (this._startVerse == this._endVerse)
         {
-        return $"{_book} {_chapter} : {_verse}-{_endVerse}";
+            return $"{this._book} {this._chapter}:{this._startVerse}";
         }
         else
         {
-            return $"{_book} {_chapter} : {_verse}";
+            return $"{this._book} {this._chapter}:{this._startVerse}-{this._endVerse}";
         }
     }
-
 }
